@@ -3,10 +3,7 @@ module.exports = {
   configureWebpack: {
     resolve: {
       alias: {
-        views: '@/views',
-        assets: '@/assets',
-        components: '@/components',
-        global: '@/global'
+        views: '@/views'
       }
     }
   }

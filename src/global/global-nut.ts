@@ -1,7 +1,15 @@
-import { Navbar, Icon } from '@nutui/nutui'
-const nutArray: any[] = [Navbar, Icon]
+import { App } from 'vue'
+import {
+  Navbar,
+  Icon,
+  Swiper,
+  SwiperItem,
+  Tabbar,
+  TabbarItem
+} from '@nutui/nutui'
+const nutArray: any[] = [Navbar, Icon, Swiper, SwiperItem, Tabbar, TabbarItem]
 
-function useNut(app: any): void {
+function useNut(app: App): void {
   nutArray.forEach((nut) => {
     app.use(nut)
   })

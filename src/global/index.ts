@@ -1,6 +1,7 @@
+import { App } from 'vue'
 import useNut from './global-nut'
 
-function useGlobal(app: any): void {
+function useGlobal(app: App): void {
   useNut(app)
 }
 

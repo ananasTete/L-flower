@@ -6,28 +6,52 @@ const routes: Array<RouteRecordRaw> = [
     redirect: '/shop'
   },
   {
+    name: 'shop',
     path: '/shop',
-    component: () => import('views/shop.vue')
+    component: () => import('views/Shop.vue'),
+    meta: {
+      isShowTabBar: true
+    }
   },
   {
+    name: 'category',
     path: '/category',
-    component: () => import('views/category.vue')
+    component: () => import('views/Category.vue'),
+    meta: {
+      isShowTabBar: true
+    }
   },
   {
+    name: 'cart',
     path: '/cart',
-    component: () => import('views/cart.vue')
+    component: () => import('views/Cart.vue'),
+    meta: {
+      isShowTabBar: true
+    }
   },
   {
+    name: 'consult',
     path: '/consult',
-    component: () => import('views/consult.vue')
+    component: () => import('views/Consult.vue'),
+    meta: {
+      isShowTabBar: true
+    }
   },
   {
+    name: 'login',
     path: '/login',
-    component: () => import('views/login.vue')
+    component: () => import('views/Login.vue'),
+    meta: {
+      isShowTabBar: false
+    }
   },
   {
+    name: 'prefile',
     path: '/prefile',
-    component: () => import('views/prefile.vue')
+    component: () => import('views/Prefile.vue'),
+    meta: {
+      isShowTabBar: false
+    }
   }
 ]
 
