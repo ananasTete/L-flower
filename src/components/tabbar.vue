@@ -1,51 +1,59 @@
 <template>
   <div class="tabbar">
-    <nut-tabbar>
-      <nut-tabbar-item
-        tab-title="商城"
-        icon="shop"
-        @click="onShopClick"
-      ></nut-tabbar-item>
-      <nut-tabbar-item
-        tab-title="分类"
-        icon="category"
-        @click="onCateGoryClick"
-      ></nut-tabbar-item>
-      <nut-tabbar-item
-        tab-title="购物车"
-        icon="cart"
-        @click="onCartClick"
-      ></nut-tabbar-item>
-      <nut-tabbar-item
-        tab-title="咨询"
-        icon="message"
-        @click="onConsultClick"
-      ></nut-tabbar-item>
-    </nut-tabbar>
+    <van-config-provider :theme-vars="themeVars">
+      <van-tabbar v-model="active" active-color="#ee0a24" fixed>
+        <van-tabbar-item icon="shop-o" @click="onShopClick"
+          >商城</van-tabbar-item
+        >
+        <van-tabbar-item icon="apps-o" @click="onCateGoryClick"
+          >分类</van-tabbar-item
+        >
+        <van-tabbar-item icon="cart-o" @click="onCartClick"
+          >购物车</van-tabbar-item
+        >
+        <van-tabbar-item icon="service-o" @click="onConsultClick"
+          >咨询</van-tabbar-item
+        >
+      </van-tabbar>
+    </van-config-provider>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 export default defineComponent({
   name: '',
   setup() {
+    // 修改vant组件样式
+    const themeVars = {
+      tabbarHeight: '50px'
+    }
+
+    // tabbar索引值
+    const active = ref(0)
+
     const router = useRouter()
+    // 点击"商城"事件
     function onShopClick() {
       router.replace('/shop')
     }
+    // 点击"分类"事件
     function onCateGoryClick() {
       router.replace('/category')
     }
+    // 点击"购物车"事件
     function onCartClick() {
       router.replace('/cart')
     }
+    // 点击"咨询"事件
     function onConsultClick() {
       router.replace('/consult')
     }
     return {
+      themeVars,
+      active,
       onShopClick,
       onCateGoryClick,
       onCartClick,
@@ -55,12 +63,4 @@ export default defineComponent({
 })
 </script>
 
-<style scoped lang="less">
-.tabbar {
-  width: 750px;
-  height: 100px;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-}
-</style>
+<style scoped lang="less"></style>

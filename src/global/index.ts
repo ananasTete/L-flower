@@ -1,8 +1,8 @@
 import { App } from 'vue'
-import useNut from './global-nut'
+import useVant from './global-vant'
 
 function useGlobal(app: App): void {
-  useNut(app)
+  useVant(app)
 }
 
 export default useGlobal

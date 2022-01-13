@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <nav-bar message="咨询" />
+    <nav-bar title="咨询" />
   </div>
 </template>
 

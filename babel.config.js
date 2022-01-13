@@ -9,6 +9,14 @@ module.exports = {
         camel2DashComponentName: false
       },
       'nutui3-vue'
+    ],
+    [
+      'import',
+      {
+        libraryName: 'vant',
+        libraryDirectory: 'es',
+        style: true
+      }
     ]
   ]
 }

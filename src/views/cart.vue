@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav-bar message="购物车"></nav-bar>
+    <nav-bar title="购物车" />
   </div>
 </template>
 
