@@ -8,7 +8,12 @@ import {
   Icon,
   ConfigProvider,
   Tabbar,
-  TabbarItem
+  TabbarItem,
+  SubmitBar,
+  Checkbox,
+  Button,
+  Grid,
+  GridItem
 } from 'vant'
 
 const vantArray: any[] = [
@@ -19,7 +24,12 @@ const vantArray: any[] = [
   Icon,
   ConfigProvider,
   Tabbar,
-  TabbarItem
+  TabbarItem,
+  SubmitBar,
+  Checkbox,
+  Button,
+  Grid,
+  GridItem
 ]
 
 function useVant(app: App): void {
