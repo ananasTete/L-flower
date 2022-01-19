@@ -1,7 +1,7 @@
 <template>
   <div class="tabbar">
     <van-config-provider :theme-vars="themeVars">
-      <van-tabbar v-model="active" active-color="#ee0a24" fixed>
+      <van-tabbar v-model="active" active-color="#ee0a24" fixed z-index="999">
         <van-tabbar-item icon="shop-o" @click="onShopClick"
           >商城</van-tabbar-item
         >

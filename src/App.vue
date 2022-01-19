@@ -5,7 +5,7 @@
         <component :is="Component" />
       </keep-alive>
     </router-view>
-    <tab-bar v-if="route.meta.isShowTabBar"></tab-bar>
+    <tab-bar class="tabbar" v-if="route.meta.isShowTabBar"></tab-bar>
   </div>
 </template>
 
@@ -29,8 +29,7 @@ export default defineComponent({
 </script>
 <style lang="less" scoped>
 .app {
-  width: 100vw;
+  width: 750px;
   height: 100vh;
-  overflow: hidden;
 }
 </style>

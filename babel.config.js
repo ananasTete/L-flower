@@ -4,15 +4,6 @@ module.exports = {
     [
       'import',
       {
-        libraryName: '@nutui/nutui',
-        libraryDirectory: 'dist/packages/_es',
-        camel2DashComponentName: false
-      },
-      'nutui3-vue'
-    ],
-    [
-      'import',
-      {
         libraryName: 'vant',
         libraryDirectory: 'es',
         style: true
