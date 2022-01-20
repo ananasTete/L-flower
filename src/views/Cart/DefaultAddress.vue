@@ -67,7 +67,8 @@ export default defineComponent({
   }
   .address {
     padding: 0 15px;
-    font-size: 32px;
+    font-size: 30px;
+    line-height: 40px;
   }
 
   .chooseAddress {

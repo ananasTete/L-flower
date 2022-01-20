@@ -7,6 +7,10 @@
       <default-address :default-address="defaultAddressInfo"></default-address>
 
       <!-- // 订单列表 -->
+      <div class="order-list">
+        <order-list-item></order-list-item>
+        <order-list-item></order-list-item>
+      </div>
     </main>
 
     <!-- // 提交订单栏 -->
@@ -25,11 +29,13 @@
 import { defineComponent, ref } from 'vue'
 import NavBar from '@/components/NavBar.vue'
 import DefaultAddress from './Cart/DefaultAddress.vue'
+import OrderListItem from './Cart/OrderListItem.vue'
 
 export default defineComponent({
   components: {
     NavBar,
-    DefaultAddress
+    DefaultAddress,
+    OrderListItem
   },
   name: 'Cart',
   setup() {
@@ -73,7 +79,13 @@ export default defineComponent({
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    padding: 20px;
+    padding: 30px 20px;
+
+    .order-list {
+      width: 100%;
+      height: 100%;
+      margin-top: 30px;
+    }
   }
 
   .submitbar {
