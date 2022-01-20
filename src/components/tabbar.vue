@@ -21,7 +21,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 
 export default defineComponent({
   name: '',
@@ -31,8 +31,11 @@ export default defineComponent({
       tabbarHeight: '50px'
     }
 
-    // tabbar索引值
-    const active = ref(0)
+    // 设置tabBar默认索引值为当前页面对应的tabBar索引值
+    const tabbarArray = ['/shop', '/category', '/cart', '/consult']
+    const route = useRoute()
+    const defaultIndex = tabbarArray.findIndex((item) => item == route.path)
+    const active = ref(defaultIndex)
 
     const router = useRouter()
     // 点击"商城"事件
