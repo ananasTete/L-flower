@@ -13,7 +13,10 @@ import {
   Checkbox,
   Button,
   Grid,
-  GridItem
+  GridItem,
+  Swipe,
+  SwipeItem,
+  Lazyload
 } from 'vant'
 
 const vantArray: any[] = [
@@ -29,7 +32,10 @@ const vantArray: any[] = [
   Checkbox,
   Button,
   Grid,
-  GridItem
+  GridItem,
+  Swipe,
+  SwipeItem,
+  Lazyload
 ]
 
 function useVant(app: App): void {

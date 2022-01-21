@@ -52,6 +52,7 @@ export default defineComponent({
 
 <style scoped lang="less">
 .nav-bar {
+  width: 750px;
   color: #ee0a24;
 }
 </style>
