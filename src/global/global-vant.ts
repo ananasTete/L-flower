@@ -16,7 +16,10 @@ import {
   GridItem,
   Swipe,
   SwipeItem,
-  Lazyload
+  Lazyload,
+  Tab,
+  Tabs,
+  Loading
 } from 'vant'
 
 const vantArray: any[] = [
@@ -35,7 +38,10 @@ const vantArray: any[] = [
   GridItem,
   Swipe,
   SwipeItem,
-  Lazyload
+  Lazyload,
+  Tab,
+  Tabs,
+  Loading
 ]
 
 function useVant(app: App): void {

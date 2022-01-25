@@ -8,7 +8,7 @@
         class="search"
         v-model="value"
         placeholder="请输入搜索关键词"
-        @search="onSearch"
+        @click-input="onSearch"
       />
 
       <!-- 轮播图 -->
@@ -23,6 +23,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, reactive } from 'vue'
+import { useRouter } from 'vue-router'
 import NavBar from '@/components/NavBar.vue'
 import { getSwiper } from '@/api/shop'
 
@@ -31,9 +32,10 @@ export default defineComponent({
   name: 'Shop',
   setup() {
     // 搜索框
+    const router = useRouter()
     const value = ref('')
     function onSearch() {
-      console.log('search事件触发')
+      router.push('/search')
     }
 
     // 请求轮播图

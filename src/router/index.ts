@@ -52,6 +52,14 @@ const routes: Array<RouteRecordRaw> = [
     meta: {
       isShowTabBar: false
     }
+  },
+  {
+    name: 'search',
+    path: '/search',
+    component: () => import('views/Search.vue'),
+    meta: {
+      isShowTabBar: false
+    }
   }
 ]
 
