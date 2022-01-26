@@ -2,4 +2,16 @@ type GridItemType = {
   name: string
 }
 
-export { GridItemType }
+type labelType = {
+  id: number
+  name: string
+  imgUrl: string
+  categoryId: number
+}
+type CategoryType = {
+  id: number
+  name: string
+  labels: labelType[]
+}
+
+export { GridItemType, CategoryType }

@@ -1,16 +1,17 @@
 <template>
   <div class="nav-bar">
-    <van-config-provider :theme-vars="themeVars">
-      <van-nav-bar :title="title" left-arrow>
-        <template #left>
-          <van-icon name="arrow-left" size="18" color="red" @click="back" />
-          返回
-        </template>
-        <template #right>
-          <van-icon name="user-o" size="18" color="red" @click="send" />
-        </template>
-      </van-nav-bar>
-    </van-config-provider>
+    <slot name="left">
+      <div class="left">
+        <van-icon name="arrow-left" size="18" color="#fff" @click="back" />
+        返回
+      </div>
+    </slot>
+    <slot name="center">
+      <span class="center">{{ title }}</span>
+    </slot>
+    <slot name="right">
+      <van-icon name="user-o" size="18" color="#fff" @click="send" />
+    </slot>
   </div>
 </template>
 
@@ -21,18 +22,10 @@ export default defineComponent({
   name: 'Shop',
   props: {
     title: {
-      type: String,
-      required: true
+      type: String
     }
   },
   setup() {
-    // 修改vant组件样式
-    const themeVars = {
-      navBarHeight: '40px',
-      navBarTitleFontSize: '16px',
-      navBarTitleTextColor: 'red'
-    }
-
     // 左右图标事件
     const router = useRouter()
     const back = () => {
@@ -42,7 +35,6 @@ export default defineComponent({
       router.push('/prefile')
     }
     return {
-      themeVars,
       back,
       send
     }
@@ -52,7 +44,23 @@ export default defineComponent({
 
 <style scoped lang="less">
 .nav-bar {
-  width: 750px;
-  color: #ee0a24;
+  color: #fff;
+  background-color: #ee0a24;
+
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 25px;
+
+  .left {
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+  }
+
+  .center {
+    font-size: 32px;
+  }
 }
 </style>
