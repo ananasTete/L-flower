@@ -43,7 +43,9 @@
         </van-tabs>
 
         <!-- 商品列表 -->
-        <list class="list" :search-list="searchResult.list"></list>
+        <div class="list">
+          <shop-list :search-list="searchResult.list"></shop-list>
+        </div>
       </div>
     </main>
   </div>
@@ -54,11 +56,11 @@ import { defineComponent, ref, onActivated, reactive } from 'vue'
 import NavBar from '@/components/NavBar.vue'
 import SearchHistory from './Search/SearchHistory.vue'
 import setSearchHistory from '@/utils/setSearchHistory'
-import List from '@/components/List.vue'
+import ShopList from '@/components/ShopList.vue'
 import { search } from '@/api/search'
 
 export default defineComponent({
-  components: { NavBar, SearchHistory, List },
+  components: { NavBar, SearchHistory, ShopList },
   name: '',
   setup() {
     // 修改navbar中搜索栏样式
@@ -174,6 +176,8 @@ export default defineComponent({
 
     .search-list {
       height: 100%;
+      background-color: #f5f5f5;
+
       .title-slot {
         display: flex;
         .icon-img {
@@ -190,6 +194,8 @@ export default defineComponent({
 
       .list {
         height: calc(100% - 88px);
+        padding: 0 20px;
+        overflow: auto;
       }
     }
   }
