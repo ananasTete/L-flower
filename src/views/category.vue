@@ -64,7 +64,11 @@ export default defineComponent({
     // 路由跳转
     const router = useRouter()
     function onGridItemClick(id: number) {
-      router.push('/search')
+      const newId = String(id)
+      router.push({
+        path: '/search/search-result',
+        query: { id: newId }
+      })
     }
     return {
       themeVars,
