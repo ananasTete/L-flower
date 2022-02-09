@@ -59,6 +59,36 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('views/Search.vue'),
     meta: {
       isShowTabBar: false
+    },
+    children: [
+      {
+        path: '',
+        redirect: '/search/search-history'
+      },
+      {
+        name: 'search-history',
+        path: 'search-history',
+        component: () => import('views/Search/SearchHistory.vue'),
+        meta: {
+          isShowTabBar: false
+        }
+      },
+      {
+        name: 'search-result',
+        path: 'search-result',
+        component: () => import('views/Search/SearchResult.vue'),
+        meta: {
+          isShowTabBar: false
+        }
+      }
+    ]
+  },
+  {
+    name: 'details',
+    path: '/details/:flowerId',
+    component: () => import('views/Details.vue'),
+    meta: {
+      isShowTabBar: false
     }
   }
 ]

@@ -17,7 +17,7 @@ export default defineComponent({
   name: '',
   emits: ['onHistoryItemClick'],
   setup(props, { emit }) {
-    // 获取搜索历史（本组件通过v-if展示，所以此不需要响应式）
+    // 获取搜索历史
     let searchHistory = localCache.getCache('searchHistory')
 
     // 点击搜索历史事件
