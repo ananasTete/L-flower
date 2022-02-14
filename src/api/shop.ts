@@ -6,4 +6,13 @@ function getSwiper() {
   })
 }
 
-export { getSwiper }
+function addShopToCart(cartInfo: any) {
+  return request.post({
+    url: '/cart',
+    data: {
+      cartInfo
+    }
+  })
+}
+
+export { getSwiper, addShopToCart }
