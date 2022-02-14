@@ -19,7 +19,14 @@ import {
   Lazyload,
   Tab,
   Tabs,
-  Loading
+  Loading,
+  ActionBar,
+  ActionBarIcon,
+  ActionBarButton,
+  Toast,
+  Form,
+  Field,
+  CellGroup
 } from 'vant'
 
 const vantArray: any[] = [
@@ -41,7 +48,14 @@ const vantArray: any[] = [
   Lazyload,
   Tab,
   Tabs,
-  Loading
+  Loading,
+  ActionBar,
+  ActionBarIcon,
+  ActionBarButton,
+  Toast,
+  Form,
+  Field,
+  CellGroup
 ]
 
 function useVant(app: App): void {
