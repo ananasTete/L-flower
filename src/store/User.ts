@@ -1,6 +1,7 @@
 import localCache from '@/utils/localCache'
 import { defineStore } from 'pinia'
 import { UserStateType } from './types'
+import { useCartStore } from './Cart'
 
 export const useUserStore = defineStore('user', {
   state: () =>
@@ -8,10 +9,19 @@ export const useUserStore = defineStore('user', {
       userInfo: {}
     } as UserStateType),
   actions: {
-    updateUserInfo(user: any) {
-      this.userInfo = user
-      localCache.setCache('user', user)
-      localCache.setCache('token', user.token)
+    updateUserInfo(res: any) {
+      const cartStore = useCartStore()
+
+      const { userInfo, cartInfo } = res
+      this.userInfo = userInfo
+      localCache.setCache('userInfo', userInfo)
+
+      cartStore.updateCartInfo(cartInfo)
+    },
+    resetLoginInfo() {
+      const cartStore = useCartStore()
+      this.userInfo = localCache.getCache('userInfo') || []
+      cartStore.cartList = localCache.getCache('cartInfo') || []
     }
   }
 })
