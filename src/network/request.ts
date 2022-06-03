@@ -4,12 +4,13 @@ import localCache from '../utils/localCache'
 
 const instance: AxiosInstance = axios.create({
   baseURL: '/api',
+  // baseURL: 'http://localhost:8000',
   timeout: 5000
 })
 
 instance.interceptors.request.use(
   (config: AxiosRequestConfig) => {
-    const token = localCache.getCache('token')
+    const token = localCache.getCache('userInfo')?.token
     if (token) {
       config.headers = {
         Authorization: `Bearer ${token}`

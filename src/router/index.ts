@@ -34,7 +34,7 @@ const routes: Array<RouteRecordRaw> = [
     path: '/consult',
     component: () => import('views/Consult.vue'),
     meta: {
-      isShowTabBar: true
+      isShowTabBar: false
     }
   },
   {
@@ -46,11 +46,11 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    name: 'prefile',
-    path: '/prefile',
-    component: () => import('views/Prefile.vue'),
+    name: 'pofile',
+    path: '/profile',
+    component: () => import('views/Profile.vue'),
     meta: {
-      isShowTabBar: false
+      isShowTabBar: true
     }
   },
   {
@@ -90,6 +90,26 @@ const routes: Array<RouteRecordRaw> = [
     meta: {
       isShowTabBar: false
     }
+  },
+  {
+    name: 'address-list',
+    path: '/address-list',
+    component: () => import('views/AddressList.vue'),
+    meta: {
+      isShowTabBar: false
+    }
+  },
+  {
+    name: 'address-edit',
+    path: '/address/:method',
+    component: () => import('views/AddressEdit.vue'),
+    meta: {
+      isShowTabBar: false
+    }
+  },
+  {
+    path: '/test',
+    component: () => import('../views/test.vue')
   }
 ]
 

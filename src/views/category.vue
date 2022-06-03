@@ -1,6 +1,6 @@
 <template>
   <div class="category">
-    <nav-bar title="分类" />
+    <nav-bar :showLeft="false" title="分类" />
 
     <div class="main">
       <!-- 侧边栏 -->

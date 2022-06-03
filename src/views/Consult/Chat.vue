@@ -39,7 +39,7 @@ export default defineComponent({
         infoList.push({ position: 'left', info: info })
       })
 
-      socket.on('chatMessage', (message) => {
+      socket.on('chatMessageS', (message) => {
         infoList.push({ position: 'left', info: message })
       })
 
@@ -55,9 +55,8 @@ export default defineComponent({
 
     function sendMessage(message: string) {
       console.log(message)
-
       socket.emit('userChatMessage', message)
-      infoList.push({ position: 'center', info: message })
+      infoList.push({ position: 'right', info: message })
     }
 
     return {

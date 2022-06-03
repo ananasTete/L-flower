@@ -26,7 +26,13 @@ import {
   Toast,
   Form,
   Field,
-  CellGroup
+  CellGroup,
+  AddressList,
+  AddressEdit,
+  ContactCard,
+  Image as VanImage,
+  Card,
+  Popup
 } from 'vant'
 
 const vantArray: any[] = [
@@ -55,7 +61,13 @@ const vantArray: any[] = [
   Toast,
   Form,
   Field,
-  CellGroup
+  CellGroup,
+  AddressList,
+  AddressEdit,
+  ContactCard,
+  VanImage,
+  Card,
+  Popup
 ]
 
 function useVant(app: App): void {

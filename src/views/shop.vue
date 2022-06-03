@@ -1,6 +1,7 @@
 <template>
   <div class="shop">
-    <nav-bar title="商城" />
+    <nav-bar :showLeft="false" title="商城" />
+
     <!-- 搜索框 -->
     <van-search
       class="search"
@@ -50,11 +51,15 @@ export default defineComponent({
       swiper.list = res
     })
 
-    // 请求全部商品数据
+    // 请求全部商品数据，并保存到store
     const searchResult: { list: any[] } = reactive({ list: [] })
-    searchAll().then((res: any) => {
-      searchResult.list = res
-    })
+    searchAll()
+      .then((res: any) => {
+        searchResult.list = res
+      })
+      .catch((err) => {
+        console.log('shop.vue/searchAll()', err)
+      })
 
     return {
       value,

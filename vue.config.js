@@ -1,8 +1,9 @@
 module.exports = {
   outputDir: './build',
   devServer: {
+    open: true,
     proxy: {
-      '^/api': {
+      '/api': {
         target: 'http://localhost:8000',
         pathRewrite: {
           '^/api': ''

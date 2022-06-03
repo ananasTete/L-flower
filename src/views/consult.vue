@@ -36,7 +36,7 @@ export default defineComponent({
 
 <style scoped lang="less">
 .consult {
-  height: calc(100% - 100px);
+  height: calc(100%);
 
   .main {
     height: calc(100% - 80px);

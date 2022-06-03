@@ -1,6 +1,6 @@
 type DefaultAddressType = {
   name: string
-  tel: number
+  tel: string
   address: string
 }
 

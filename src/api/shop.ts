@@ -6,7 +6,7 @@ function getSwiper() {
   })
 }
 
-function addShopToCart(cartInfo: any) {
+function updateShopToCart(cartInfo: any) {
   return request.post({
     url: '/cart',
     data: {
@@ -15,4 +15,41 @@ function addShopToCart(cartInfo: any) {
   })
 }
 
-export { getSwiper, addShopToCart }
+function uploadAddress(addressInfo: any) {
+  return request.post({
+    url: '/address',
+    data: {
+      addressInfo
+    }
+  })
+}
+
+function getAddressListById(id: number) {
+  return request.get({
+    url: '/address'
+  })
+}
+
+function editAddressListById(address: any) {
+  return request.patch({
+    url: '/address',
+    data: {
+      address
+    }
+  })
+}
+
+function deleteAddressById(id: number) {
+  return request.patch({
+    url: `/address/${id}`
+  })
+}
+
+export {
+  getSwiper,
+  updateShopToCart,
+  uploadAddress,
+  getAddressListById,
+  editAddressListById,
+  deleteAddressById
+}

@@ -59,6 +59,8 @@ async function loginShop() {
 
   const res: any = await login(userName.value, password.value)
 
+  console.log(res)
+
   if (res) {
     if (!res.returnCode) {
       // 登录成功

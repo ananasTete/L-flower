@@ -1,35 +1,51 @@
 <template>
   <div class="cart">
-    <nav-bar title="购物车" />
+    <nav-bar :showLeft="false" title="购物车" />
 
     <main class="content">
       <!-- // 默认收货地址 -->
-      <default-address :default-address="defaultAddressInfo"></default-address>
+      <van-config-provider v-if="showDefault" :theme-vars="themeVars">
+        <van-contact-card
+          add-text="添加收货地址"
+          type="add"
+          @click="onAddAddress"
+        />
+      </van-config-provider>
+
+      <default-address
+        v-else
+        :default-address="defaultAddressInfo.info"
+      ></default-address>
 
       <!-- // 订单列表 -->
       <div class="order-list">
-        <order-list-item></order-list-item>
-        <order-list-item></order-list-item>
+        <template v-for="item in cartStore.cartList" :key="item.id">
+          <order-list-item :cartItem="item"></order-list-item>
+        </template>
       </div>
     </main>
 
     <!-- // 提交订单栏 -->
     <van-submit-bar
       class="submitbar"
-      :price="totalPrice"
+      :price="cartStore.totalPrice"
       button-text="提交订单"
       @submit="onSubmit"
     >
-      <van-checkbox v-model="checked">全选</van-checkbox>
+      <van-checkbox v-model="checked" @click="onAllChecked">全选</van-checkbox>
     </van-submit-bar>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref, onActivated, reactive } from 'vue'
 import NavBar from '@/components/NavBar.vue'
 import DefaultAddress from './Cart/DefaultAddress.vue'
 import OrderListItem from './Cart/OrderListItem.vue'
+import { useCartStore } from '@/store/Cart'
+import { useAddressStore } from '@/store/Address'
+import { useRouter } from 'vue-router'
+import { pay } from '@/api/order'
 
 export default defineComponent({
   components: {
@@ -39,28 +55,67 @@ export default defineComponent({
   },
   name: 'Cart',
   setup() {
-    // 默认收货地址
-    const defaultAddressInfo = {
-      name: '李子航',
-      tel: 15630652656,
-      address: '浙江省杭州市西湖区文三路138号东方通信大厦7楼501室'
-    }
-    // 提交订单栏--提交按钮事件
-    function onSubmit() {
-      console.log('提交事件触发')
+    const cartStore = useCartStore()
+    const addressStore = useAddressStore()
+    const router = useRouter()
+
+    const themeVars = {
+      contactCardAddIconColor: 'red'
     }
 
-    // 提交订单栏--合计金额
-    const totalPrice = ref(0)
+    let defaultAddressInfo: any = reactive({ info: {} })
+    const showDefault = ref(false)
+
+    // 默认收货地址
+    // const item = addressStore.cartAddress
+
+    onActivated(() => {
+      const item = addressStore.cartAddress
+      console.log('def', item)
+
+      if (item) {
+        defaultAddressInfo.info = {
+          name: item.name,
+          tel: item.tel,
+          address:
+            item.address ||
+            item.province + item.city + item.county + item.addressDetail
+        }
+      } else {
+        showDefault.value = true
+      }
+    })
+
+    function onAddAddress() {
+      router.push('/address-list')
+    }
+
+    // 提交订单栏--提交按钮事件
+    function onSubmit() {
+      const orderList = cartStore.cartList.filter((item) => {
+        return item.isChecked === true
+      })
+      if (orderList.length > 0) {
+        pay(orderList)
+      }
+    }
 
     // 提交订单栏--全选checkbox
     const checked = ref(false)
 
+    function onAllChecked() {
+      cartStore.checkAll(checked.value)
+    }
+
     return {
+      cartStore,
       defaultAddressInfo,
       onSubmit,
-      totalPrice,
-      checked
+      checked,
+      onAllChecked,
+      showDefault,
+      onAddAddress,
+      themeVars
     }
   }
 })

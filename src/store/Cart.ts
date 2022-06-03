@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { CartStateType } from './types'
-import { addShopToCart } from '@/api/shop'
+import { updateShopToCart } from '@/api/shop'
 import localCache from '@/utils/localCache'
 
 export const useCartStore = defineStore('cart', {
@@ -11,7 +11,11 @@ export const useCartStore = defineStore('cart', {
   getters: {
     totalPrice(state) {
       let price = 0
-      state.cartList.forEach((item) => (price += item.count * item.price))
+      state.cartList.forEach((item) => {
+        if (item.isChecked) {
+          price += item.count * item.price
+        }
+      })
       return price * 100
     }
   },
@@ -20,35 +24,44 @@ export const useCartStore = defineStore('cart', {
       this.cartList = cartInfo
       localCache.setCache('cartInfo', cartInfo)
     },
+    findCartById(id: number) {
+      return this.cartList.find((item) => item.shopId === id)
+    },
     addToCart(cart: any) {
-      const findCart = this.cartList.find((item: any) => item.id === cart.id)
+      const findCart = this.findCartById(cart.shopId)
       if (findCart == undefined) {
         this.cartList.push(cart)
-        addShopToCart(cart)
+        updateShopToCart(cart)
       } else {
         findCart.count += cart.count
-        addShopToCart(findCart)
+        updateShopToCart(findCart)
       }
-      localCache.setCache('cart', this.cartList)
-    },
-    findCartById(id: number) {
-      if (this.cartList.length === 0) return
-      return this.cartList.find((item) => item.id === id)
+      localCache.setCache('cartInfo', this.cartList)
     },
     addCount(id: number) {
       const item = this.findCartById(id)
-      if (item) item.count++
+      if (item) {
+        item.count++
+        localCache.setCache('cartInfo', this.cartList)
+        updateShopToCart(item)
+      }
     },
     reduceCount(id: number) {
       const item = this.findCartById(id)
-      if (item && item.count > 1) item.count--
+      if (item && item.count > 1) {
+        item.count--
+        localCache.setCache('cartInfo', this.cartList)
+        updateShopToCart(item)
+      }
     },
     changeChecked(id: number) {
       const item = this.findCartById(id)
       if (item) item.isChecked = !item.isChecked
+      localCache.setCache('cartInfo', this.cartList)
     },
     checkAll(status: boolean) {
       this.cartList.forEach((item) => (item.isChecked = status))
+      localCache.setCache('cartInfo', this.cartList)
     }
   }
 })

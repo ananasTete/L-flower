@@ -1,6 +1,6 @@
 <template>
   <div class="nav-bar">
-    <slot name="left">
+    <slot name="left" v-if="showLeft">
       <div class="left">
         <van-icon name="arrow-left" size="18" color="#fff" @click="back" />
         返回
@@ -10,7 +10,7 @@
       <span class="center">{{ title }}</span>
     </slot>
     <slot name="right">
-      <van-icon name="user-o" size="18" color="#fff" @click="send" />
+      <van-icon name="service-o" size="18" color="#fff" @click="send" />
     </slot>
   </div>
 </template>
@@ -23,6 +23,10 @@ export default defineComponent({
   props: {
     title: {
       type: String
+    },
+    showLeft: {
+      type: Boolean,
+      default: true
     }
   },
   setup() {
@@ -32,7 +36,7 @@ export default defineComponent({
       router.back()
     }
     const send = () => {
-      router.push('/prefile')
+      router.push('/consult')
     }
     return {
       back,

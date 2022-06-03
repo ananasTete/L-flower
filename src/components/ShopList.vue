@@ -1,9 +1,9 @@
 <template>
   <div class="shop-list">
     <template v-for="item in searchList" :key="item.id">
-      <div class="item">
+      <div class="item" @click="onItemClick(item)">
         <div class="img-div">
-          <img :src="item.img_url[0]" alt="" class="img" />
+          <img v-lazy="item.img_url[0]" alt="" class="img" />
         </div>
         <div class="item-content">
           <div class="title">{{ item.name }}</div>
@@ -20,12 +20,24 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
+import { useRouter } from 'vue-router'
 
 export default defineComponent({
   name: '',
   props: {
     searchList: {
       type: Array as PropType<any[]>
+    }
+  },
+  setup() {
+    const router = useRouter()
+
+    function onItemClick(item: any) {
+      router.push(`/details/${item.id}`)
+    }
+
+    return {
+      onItemClick
     }
   }
 })

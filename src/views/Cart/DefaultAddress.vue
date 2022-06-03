@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" @click="onChooseAddress">
     <div class="info">
       <span class="name info-child">{{ defaultAddress.name }}</span>
       <span class="tel info-child">{{ defaultAddress.tel }}</span>
@@ -14,7 +14,7 @@
       >
     </div>
     <div class="address">{{ defaultAddress.address }}</div>
-    <div class="chooseAddress" @click="onChooseAddress">
+    <div class="chooseAddress">
       <van-icon name="arrow" color="gray" size="30" />
     </div>
   </div>
@@ -22,6 +22,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
+import { useRouter } from 'vue-router'
 import { DefaultAddressType } from './types'
 
 export default defineComponent({
@@ -33,9 +34,11 @@ export default defineComponent({
     }
   },
   setup() {
+    const router = useRouter()
+
     // 选择收货地址
     function onChooseAddress() {
-      console.log('选择收货地址事件')
+      router.push('/address-list')
     }
 
     return {

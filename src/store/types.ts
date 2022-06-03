@@ -5,3 +5,9 @@ export type CartStateType = {
 export type UserStateType = {
   userInfo: any
 }
+
+export type AddressStateType = {
+  addressList: any[]
+  currentAddress: any
+  cartAddress: any
+}

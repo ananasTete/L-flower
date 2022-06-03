@@ -49,7 +49,6 @@ export default defineComponent({
     } else if (queryName === 'id') {
       searchByLabelId(query.id as string).then((res: any) => {
         searchResult.list = res
-        console.log(res)
       })
     }
 
