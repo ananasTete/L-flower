@@ -126,14 +126,14 @@ const orderList = reactive({ list: [] })
 function reset() {
   getOrders().then((res: any) => {
     orderList.list = res
-    // console.log(res[0].status, typeof res[0].status)
+    console.log('订单信息', orderList.list)
+    a.list = orderList.list.filter((item: any) => {
+      console.log(item)
+      return item.status === 0
+    })
+    b.list = orderList.list.filter((item: any) => item.status === 1)
+    c.list = orderList.list.filter((item: any) => item.status === 2)
   })
-  a.list = orderList.list.filter((item: any) => {
-    console.log(item)
-    return item.status === 0
-  })
-  b.list = orderList.list.filter((item: any) => item.status === 1)
-  c.list = orderList.list.filter((item: any) => item.status === 2)
 }
 
 onActivated(() => {

@@ -8,7 +8,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     name: 'shop',
     path: '/shop',
-    component: () => import('views/Shop.vue'),
+    component: () => import('../views/Shop.vue'),
     meta: {
       isShowTabBar: true
     }
@@ -16,7 +16,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     name: 'category',
     path: '/category',
-    component: () => import('views/Category.vue'),
+    component: () => import('../views/Category.vue'),
     meta: {
       isShowTabBar: true
     }
@@ -24,7 +24,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     name: 'cart',
     path: '/cart',
-    component: () => import('views/Cart.vue'),
+    component: () => import('../views/Cart.vue'),
     meta: {
       isShowTabBar: true
     }
@@ -32,7 +32,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     name: 'consult',
     path: '/consult',
-    component: () => import('views/Consult.vue'),
+    component: () => import('../views/Consult.vue'),
     meta: {
       isShowTabBar: false
     }
@@ -40,7 +40,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     name: 'login',
     path: '/login',
-    component: () => import('views/Login.vue'),
+    component: () => import('../views/Login.vue'),
     meta: {
       isShowTabBar: false
     }
@@ -48,7 +48,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     name: 'pofile',
     path: '/profile',
-    component: () => import('views/Profile.vue'),
+    component: () => import('../views/Profile.vue'),
     meta: {
       isShowTabBar: true
     }
@@ -56,7 +56,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     name: 'search',
     path: '/search',
-    component: () => import('views/Search.vue'),
+    component: () => import('../views/Search.vue'),
     meta: {
       isShowTabBar: false
     },
@@ -68,7 +68,7 @@ const routes: Array<RouteRecordRaw> = [
       {
         name: 'search-history',
         path: 'search-history',
-        component: () => import('views/Search/SearchHistory.vue'),
+        component: () => import('../views/Search/SearchHistory.vue'),
         meta: {
           isShowTabBar: false
         }
@@ -76,7 +76,7 @@ const routes: Array<RouteRecordRaw> = [
       {
         name: 'search-result',
         path: 'search-result',
-        component: () => import('views/Search/SearchResult.vue'),
+        component: () => import('../views/Search/SearchResult.vue'),
         meta: {
           isShowTabBar: false
         }
@@ -86,7 +86,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     name: 'details',
     path: '/details/:flowerId',
-    component: () => import('views/Details.vue'),
+    component: () => import('../views/Details.vue'),
     meta: {
       isShowTabBar: false
     }
@@ -94,7 +94,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     name: 'address-list',
     path: '/address-list',
-    component: () => import('views/AddressList.vue'),
+    component: () => import('../views/AddressList.vue'),
     meta: {
       isShowTabBar: false
     }
@@ -102,7 +102,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     name: 'address-edit',
     path: '/address/:method',
-    component: () => import('views/AddressEdit.vue'),
+    component: () => import('../views/AddressEdit.vue'),
     meta: {
       isShowTabBar: false
     }

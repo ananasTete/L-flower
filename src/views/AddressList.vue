@@ -25,9 +25,7 @@ const addressStore = useAddressStore()
 
 let chosenAddressId = ref('1')
 
-let list: any = reactive({ list: [] })
-onActivated(async () => {
-  await addressStore.updateAddressInfo()
+function refresh() {
   list.list = addressStore.addressList.map((item) => ({
     id: item.id,
     name: item.name,
@@ -35,6 +33,12 @@ onActivated(async () => {
     address: item.province + item.city + item.county + item.addressDetail,
     isDefault: item.isDefault === 'true' ? true : false
   }))
+}
+
+let list: any = reactive({ list: [] })
+onActivated(async () => {
+  await addressStore.updateAddressInfo()
+  refresh()
 })
 function selectDefault(item: any) {
   console.log('set', item)
